@@ -72,6 +72,10 @@
     0 2px 6px rgba(0,0,0,0.5);
   --ring: 0 0 0 2px var(--bg-1), 0 0 0 4px var(--accent-edge);
 
+  /* Status colors */
+  --status-live:      #4ade80;
+  --status-live-glow: rgba(74, 222, 128, 0.45);
+
   --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.93  0 0 0 0 0.87  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
 
   --ease-out:    cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -155,6 +159,30 @@
 }
 [data-theme="dark"] [data-cta="primary"]:hover  { background: var(--accent-hi) !important; }
 [data-theme="dark"] [data-cta="primary"]:active { background: var(--accent-lo) !important; }
+
+/* Cal widget frame — inverted per theme for contrast */
+[data-theme="light"] .cal-mount-frame {
+  background: #1b2127;
+  padding: 14px;
+  border-radius: 18px;
+}
+[data-theme="dark"] .cal-mount-frame {
+  background: #f3eee2;
+  padding: 14px;
+  border-radius: 18px;
+}
+
+/* Live indicator pulse */
+@keyframes pulse-live {
+  0%, 100% { box-shadow: 0 0 0 0 var(--status-live-glow); }
+  50%       { box-shadow: 0 0 0 5px transparent; }
+}
+
+/* Darker green in light mode for contrast on light bg */
+[data-theme="light"] {
+  --status-live:      #16a34a;
+  --status-live-glow: rgba(22, 163, 74, 0.40);
+}
 
 @layer base {
   html, body {

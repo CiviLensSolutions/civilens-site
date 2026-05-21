@@ -35,15 +35,15 @@ export function Footer() {
       <div style={s.top}>
         <div style={s.brand}>
           <Logo height={24} color="var(--fg-1)" />
-          <p style={s.blurb}>Veteran-owned AI company building smarter tools for government and nonprofits. Built in Denton, TX.</p>
-          <div style={s.veteran}>★ Veteran-owned · SDVOSB</div>
+          <p style={s.blurb}>AI consulting built on 17 years inside government technology. Practical tools, plain talk. Built in Denton, TX.</p>
+          <div style={s.veteran}>★ Veteran-owned</div>
         </div>
 
         <div style={s.col}>
           <div style={s.colTitle}>Contact</div>
           <div style={s.contactItem}>
             <span style={s.contactLabel}>Email</span>
-            <a href="mailto:shea@civilens.com" style={s.contactValueLink}>shea@civilens.com</a>
+            <a href="mailto:shea@civilens.solutions" style={s.contactValueLink}>shea@civilens.solutions</a>
           </div>
         </div>
 
@@ -64,7 +64,6 @@ export function Footer() {
           <a href="#schedule" style={s.link}>Schedule consult</a>
           <a href="#capabilities" style={s.link}>Capabilities</a>
           <a href="#about" style={s.link}>About Shea</a>
-          <a href="#" style={s.link}>Press &amp; media</a>
         </div>
       </div>
 

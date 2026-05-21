@@ -1,8 +1,20 @@
+import Image from "next/image";
+
 const s = {
-  section: { padding: "104px 80px", background: "var(--bg-0)", position: "relative" as const, overflow: "hidden" },
+  section: {
+    padding: "104px 80px",
+    position: "relative" as const, overflow: "hidden",
+    backgroundImage: "url('/assets/machine-gears.webp')",
+    backgroundSize: "cover", backgroundPosition: "center",
+  },
+  bgOverlay: {
+    position: "absolute" as const, inset: 0,
+    background: "rgba(14, 18, 22, 0.80)",
+    pointerEvents: "none" as const,
+  },
   glow: {
     position: "absolute" as const, inset: 0,
-    backgroundImage: "radial-gradient(640px 320px at 95% 100%, rgba(201,168,76,0.10), transparent 60%)",
+    backgroundImage: "radial-gradient(640px 320px at 95% 100%, rgba(201,168,76,0.12), transparent 60%)",
     pointerEvents: "none" as const,
   },
   inner: {
@@ -10,31 +22,22 @@ const s = {
     display: "grid", gridTemplateColumns: "minmax(0, 0.85fr) minmax(0, 1.15fr)",
     gap: 80, alignItems: "start", maxWidth: 1280, margin: "0 auto",
   },
-  portraitCol: { display: "flex", flexDirection: "column" as const, gap: 16 },
-  portrait: {
-    position: "relative" as const, aspectRatio: "4 / 5",
-    background: "linear-gradient(135deg, #2a323a 0%, #1b2127 60%, #2c2018 100%)",
-    borderRadius: "var(--r-4)", boxShadow: "var(--shadow-2)", overflow: "hidden",
-    display: "grid", placeItems: "center",
+  portraitCol: { display: "flex", flexDirection: "column" as const, gap: 10 },
+  mainPhoto: {
+    position: "relative" as const, width: "100%", aspectRatio: "4 / 5",
+    borderRadius: "var(--r-4)", overflow: "hidden",
+    boxShadow: "var(--shadow-3)",
   },
-  portraitGrain: {
-    position: "absolute" as const, inset: 0,
-    backgroundImage: "var(--grain)", backgroundSize: "200px 200px",
-    mixBlendMode: "overlay" as const, opacity: 0.7, pointerEvents: "none" as const,
-  },
-  portraitLabel: {
-    position: "absolute" as const, top: 16, left: 16,
-    font: "500 11px/1 var(--font-mono)", letterSpacing: "0.14em", textTransform: "uppercase" as const,
-    color: "var(--accent)", padding: "6px 10px",
-    background: "rgba(201,168,76,0.10)", boxShadow: "inset 0 0 0 1px var(--accent-edge)", borderRadius: 2,
-  },
-  portraitGlyph: {
-    font: "300 132px/1 var(--font-display)", color: "var(--fg-3)",
-    opacity: 0.35, letterSpacing: "-0.04em", userSelect: "none" as const,
+  photoRow: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 },
+  secondaryPhoto: {
+    position: "relative" as const, width: "100%", aspectRatio: "4 / 3",
+    borderRadius: "var(--r-3)", overflow: "hidden",
+    boxShadow: "var(--shadow-2)",
   },
   caption: {
     font: "500 11px/1.4 var(--font-mono)", letterSpacing: "0.12em", textTransform: "uppercase" as const,
     color: "var(--fg-3)", display: "flex", justifyContent: "space-between",
+    marginTop: 4,
   },
   bio: { display: "flex", flexDirection: "column" as const, gap: 22 },
   eb: {
@@ -60,42 +63,69 @@ const s = {
 
 export function AboutShea() {
   return (
-    <section style={s.section} id="about">
+    <section style={s.section} id="about" data-theme="dark">
+      <div style={s.bgOverlay} />
       <div style={s.glow} />
       <div style={s.inner}>
         <div style={s.portraitCol}>
-          <div style={s.portrait}>
-            <div style={s.portraitGlyph}>S</div>
-            <div style={s.portraitGrain} />
-            <div style={s.portraitLabel}>★ Founder · SDVOSB</div>
+          <div style={s.mainPhoto}>
+            <Image
+              src="/assets/shea-portrait.webp"
+              alt="Shea Scott"
+              fill
+              style={{ objectFit: "cover", objectPosition: "center top" }}
+              sizes="(max-width: 1280px) 35vw, 440px"
+            />
+          </div>
+          <div style={s.photoRow}>
+            <div style={s.secondaryPhoto}>
+              <Image
+                src="/assets/shea-c5-flight.webp"
+                alt="Shea Scott on C-5 Galaxy"
+                fill
+                style={{ objectFit: "cover", objectPosition: "center top" }}
+                sizes="(max-width: 1280px) 17vw, 210px"
+              />
+            </div>
+            <div style={s.secondaryPhoto}>
+              <Image
+                src="/assets/shea-c5.webp"
+                alt="C-5 Galaxy on the tarmac"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 1280px) 17vw, 210px"
+              />
+            </div>
           </div>
           <div style={s.caption}>
             <span>Shea Scott · Denton, TX</span>
-            <span>Portrait pending</span>
+            <span>C-5 Galaxy, USAF</span>
           </div>
         </div>
 
         <div style={s.bio}>
           <div style={s.eb}><span style={s.ebRule} />About the host</div>
-          <h2 style={s.headline}>Shea Scott — 17 years inside the machine.</h2>
+          <h2 style={s.headline}>Shea Scott — 17 years building government technology.</h2>
           <p style={s.para}>
-            Shea is a <span style={s.paraStrong}>U.S. Army veteran</span>{" "}
-            who spent 17 years in public sector technology — long enough to
-            know exactly where the waste lives. He started CiviLens because
-            the tools government and nonprofits deserve don&apos;t exist yet,
-            and waiting for someone else to build them stopped making sense.
+            After five years in the Air Force, Shea spent 17 years building web
+            systems inside government. He knows where the friction lives because
+            he worked inside it — not as a consultant looking in, but as someone
+            who spent years navigating the same slow procurement cycles, legacy
+            constraints, and underfunded IT shops that your team deals with
+            every day.
           </p>
           <p style={s.para}>
-            He runs the consults himself — no SDR, no funnel. The point is
-            to talk plainly about what AI is actually good at right now, and
-            what it&apos;s not. You bring a workflow; he brings 17 years of
-            knowing where the slow parts hide.
+            He runs the consults himself — no gimmicks. Just a direct
+            conversation about what your team actually does and where AI can make
+            a measurable difference. You bring the workflow; he brings 20 years
+            of building web systems for organizations that couldn&apos;t afford
+            for them to fail.
           </p>
           <div style={s.stats}>
             {[
-              { value: "17 yrs", label: "Public sector technology" },
-              { value: "70%", label: "Service-connected · U.S. Army" },
-              { value: "0", label: "Sales decks shown" },
+              { value: "17 yrs", label: "Inside government technology" },
+              { value: "20 yrs", label: "Web development" },
+              { value: "Free", label: "Cost of the consult" },
             ].map((stat) => (
               <div key={stat.label} style={s.stat}>
                 <div style={s.statValue}>{stat.value}</div>

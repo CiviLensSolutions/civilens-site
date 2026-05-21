@@ -1,5 +1,4 @@
 import { Nav } from "@/components/Nav";
-import { Banner } from "@/components/Banner";
 import { CalEmbed } from "@/components/CalEmbed";
 import { SectionRule } from "@/components/SectionRule";
 import { AboutShea } from "@/components/AboutShea";
@@ -10,7 +9,6 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <Banner />
       <CalEmbed />
       <SectionRule />
       <AboutShea />

@@ -52,8 +52,8 @@ export function Capabilities() {
           <h2 style={s.title}>What CiviLens does, when you&apos;re ready.</h2>
         </div>
         <p style={s.blurb}>
-          The consult isn&apos;t a sales call — but if you do work that
-          touches federal filings, here&apos;s what we sell.
+          The consult isn&apos;t a sales call — but if you want to know
+          what we actually build, here&apos;s what we do.
         </p>
       </div>
       <div style={s.grid}>

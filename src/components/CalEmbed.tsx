@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { ClaudeMark } from "./ClaudeMark";
+import { ClaudeProBadge } from "./ClaudeProBadge";
 
 declare global {
   interface Window {
@@ -17,15 +17,15 @@ const s = {
   },
   bgGlow: {
     position: "absolute" as const, inset: 0,
-    backgroundImage: "radial-gradient(720px 360px at 92% 10%, rgba(201,168,76,0.10), transparent 60%)",
+    backgroundImage: "radial-gradient(720px 360px at 92% 10%, rgba(201,168,76,0.12), transparent 60%)",
     pointerEvents: "none" as const,
   },
   inner: {
     position: "relative" as const,
     display: "grid", gridTemplateColumns: "minmax(0, 0.75fr) minmax(0, 1.25fr)",
-    gap: 80, alignItems: "center", maxWidth: 1280, margin: "0 auto",
+    gap: 80, alignItems: "start", maxWidth: 1280, margin: "0 auto",
   },
-  pitch: { display: "flex", flexDirection: "column" as const, gap: 24 },
+  pitch: { display: "flex", flexDirection: "column" as const, gap: 24, paddingTop: 32 },
   eb: {
     font: "500 12px/1 var(--font-mono)", letterSpacing: "0.18em", textTransform: "uppercase" as const,
     color: "var(--accent)", display: "inline-flex", alignItems: "center", gap: 12,
@@ -37,6 +37,10 @@ const s = {
   },
   amber: { color: "var(--accent)" },
   body: { font: "400 16.5px/1.55 var(--font-sans)", color: "var(--fg-2)", margin: 0, maxWidth: 520 },
+  bodyAside: {
+    font: "400 15px/1.6 var(--font-sans)", color: "var(--fg-3)", margin: 0, maxWidth: 520,
+    paddingTop: 20, boxShadow: "inset 0 1px 0 var(--hairline)",
+  },
   embedWrap: { display: "flex", flexDirection: "column" as const, gap: 12 },
   embedLabel: {
     display: "flex", alignItems: "center", justifyContent: "space-between",
@@ -48,8 +52,13 @@ const s = {
     padding: "6px 10px", background: "var(--bg-2)",
     boxShadow: "inset 0 0 0 1px var(--hairline-2)", borderRadius: "var(--r-2)",
   },
-  embedLabelDot: { width: 6, height: 6, borderRadius: "var(--r-full)", background: "var(--accent)" },
-  calMount: { borderRadius: 18, overflow: "hidden", boxShadow: "var(--shadow-3)", minHeight: 400 },
+  embedLabelDot: {
+    width: 8, height: 8, borderRadius: "var(--r-full)",
+    background: "var(--status-live)",
+    animation: "pulse-live 2s ease-in-out infinite",
+    flexShrink: 0,
+  },
+  calMount: { boxShadow: "var(--shadow-3)", minHeight: 680 },
   watermark: {
     marginTop: 12, textAlign: "center" as const,
     font: "500 12px/1 var(--font-mono)", color: "var(--fg-4)",
@@ -80,6 +89,13 @@ const s = {
 
 export function CalEmbed() {
   useEffect(() => {
+    const handleCalMessage = (e: MessageEvent) => {
+      if (e.data?.type === "__routeChanged" || e.data?.action === "__routeChanged") {
+        document.getElementById("cal-embed-mount")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+    window.addEventListener("message", handleCalMessage);
+
     if (window.__calLoaded) return;
     window.__calLoaded = true;
 
@@ -117,6 +133,8 @@ export function CalEmbed() {
       hideEventTypeDetails: false,
       layout: "month_view",
     });
+
+    return () => window.removeEventListener("message", handleCalMessage);
   }, []);
 
   return (
@@ -130,7 +148,15 @@ export function CalEmbed() {
             <span style={s.amber}>That&apos;s the whole step.</span>
           </h2>
           <p style={s.body}>
-            30 minutes. Free. One month of Claude Pro<ClaudeMark /> when we&apos;re done.
+            30 minutes. Free. One month of <ClaudeProBadge /><br />when we&apos;re done.
+          </p>
+          <p style={s.bodyAside}>
+            Ollama. DeepSeek. Qwen. Grok. They sound more like spaceship names than
+            tools you can actually use. If you&apos;re not sure where to start — or
+            whether any of it is worth your time — that&apos;s exactly what this is for.
+          </p>
+          <p style={s.body}>
+            Not ready for that yet? Grab 15 minutes instead — no agenda, no pitch. Just answers.
           </p>
         </div>
 
@@ -142,8 +168,8 @@ export function CalEmbed() {
               cal.com/shea-civilens
             </span>
           </div>
-          <div style={s.calMount}>
-            <div id="cal-embed-mount" style={{ minHeight: 400 }} />
+          <div style={s.calMount} className="cal-mount-frame">
+            <div id="cal-embed-mount" style={{ minHeight: 680 }} />
           </div>
           <div style={s.watermark}>cal.com</div>
         </div>
@@ -156,14 +182,14 @@ export function CalEmbed() {
         </div>
         <div style={s.wygGrid}>
           {([
-            { n: "01", title: "An honest look at your week." },
+            { n: "01", title: "An honest look at your work." },
             { n: "02", title: "Two or three concrete moves." },
             { n: "03", title: null },
           ] as { n: string; title: string | null }[]).map((item) => (
             <div key={item.n} style={s.wygCell}>
               <div style={s.wygNum}>{item.n}</div>
               <h4 style={s.wygCellTitle}>
-                {item.title ?? <>A month of Claude Pro<ClaudeMark />.</>}
+                {item.title ?? <>A month of <ClaudeProBadge />.</>}
               </h4>
             </div>
           ))}

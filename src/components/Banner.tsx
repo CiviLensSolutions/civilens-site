@@ -50,7 +50,7 @@ export function Banner() {
       <div style={s.caption}>
         <div style={s.eb}>
           <span style={s.ebRule} />
-          Civic intelligence · Veteran-owned
+          Civic intelligence · Built in Denton, TX
         </div>
         <h2 style={s.title}>
           <span>Civic Intelligence</span>

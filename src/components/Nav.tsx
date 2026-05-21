@@ -39,18 +39,20 @@ const s = {
 };
 
 const navItems = [
-  { label: "Capabilities", href: "#capabilities" },
-  { label: "Free consult",  href: "#schedule" },
-  { label: "About",         href: "#about" },
+  { label: "FREE CONSULT",  href: "#schedule" },
+  { label: "CAPABILITIES",  href: "#capabilities" },
+  { label: "ABOUT",         href: "#about" },
 ];
 
 export function Nav() {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    const stored = localStorage.getItem("civilens-theme") || "light";
-    setTheme(stored);
-    document.documentElement.setAttribute("data-theme", stored);
+    const stored = localStorage.getItem("civilens-theme");
+    const system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const resolved = stored ?? system;
+    setTheme(resolved);
+    document.documentElement.setAttribute("data-theme", resolved);
   }, []);
 
   const toggleTheme = () => {
@@ -87,7 +89,7 @@ export function Nav() {
           <button style={s.cta} data-cta="primary"
             onMouseOver={(e) => (e.currentTarget.style.background = "var(--accent-hi)")}
             onMouseOut={(e) => (e.currentTarget.style.background = "var(--accent)")}
-          >Schedule consult</button>
+          >Schedule A Consult</button>
         </a>
       </div>
       <div style={s.rule} />
