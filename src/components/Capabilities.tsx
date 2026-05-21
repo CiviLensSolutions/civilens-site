@@ -45,7 +45,7 @@ const CAPS = [
 export function Capabilities() {
   const [hover, setHover] = useState<number | null>(null);
   return (
-    <section style={s.section} id="capabilities">
+    <section style={s.section} id="capabilities" className="section-pad">
       <div style={s.head}>
         <div>
           <div style={s.eb}><span style={s.ebRule} />The product, briefly</div>
@@ -56,7 +56,7 @@ export function Capabilities() {
           what we actually build, here&apos;s what we do.
         </p>
       </div>
-      <div style={s.grid}>
+      <div style={s.grid} className="mob-1col">
         {CAPS.map((c, i) => (
           <div key={c.n} style={s.card(hover === i)}
             onMouseEnter={() => setHover(i)}

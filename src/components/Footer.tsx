@@ -31,8 +31,8 @@ const s = {
 
 export function Footer() {
   return (
-    <footer style={s.foot}>
-      <div style={s.top}>
+    <footer style={s.foot} className="section-pad">
+      <div style={s.top} className="footer-grid">
         <div style={s.brand}>
           <Logo height={24} color="var(--fg-1)" />
           <p style={s.blurb}>AI consulting built on 17 years inside government technology. Practical tools, plain talk. Built in Denton, TX.</p>

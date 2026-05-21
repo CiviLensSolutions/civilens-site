@@ -52,7 +52,7 @@ export function Banner() {
           <span style={s.ebRule} />
           Civic intelligence · Built in Denton, TX
         </div>
-        <h2 style={s.title}>
+        <h2 style={s.title} className="banner-title">
           <span>Civic Intelligence</span>
           <span style={s.titleSep} />
           <span>Built for Operators</span>

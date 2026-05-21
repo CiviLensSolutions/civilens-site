@@ -138,9 +138,9 @@ export function CalEmbed() {
   }, []);
 
   return (
-    <section style={s.section} id="schedule">
+    <section style={s.section} id="schedule" className="section-pad section-pad-b">
       <div style={s.bgGlow} />
-      <div style={s.inner}>
+      <div style={s.inner} className="mob-stack">
         <div style={s.pitch}>
           <div style={s.eb}><span style={s.ebRule} />Schedule · cal.com</div>
           <h2 style={s.title}>
@@ -175,12 +175,12 @@ export function CalEmbed() {
         </div>
       </div>
 
-      <div style={s.wygWrap}>
+      <div style={s.wygWrap} className="wyg-wrap-pad">
         <div style={s.wygHead}>
           <div style={s.eb}><span style={s.ebRule} />What you&apos;ll get</div>
           <h3 style={s.wygTitle}>Thirty minutes. Three things to take with you.</h3>
         </div>
-        <div style={s.wygGrid}>
+        <div style={s.wygGrid} className="mob-1col">
           {([
             { n: "01", title: "An honest look at your work." },
             { n: "02", title: "Two or three concrete moves." },

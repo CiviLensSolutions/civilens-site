@@ -63,10 +63,10 @@ const s = {
 
 export function AboutShea() {
   return (
-    <section style={s.section} id="about" data-theme="dark">
+    <section style={s.section} id="about" data-theme="dark" className="section-pad">
       <div style={s.bgOverlay} />
       <div style={s.glow} />
-      <div style={s.inner}>
+      <div style={s.inner} className="mob-stack">
         <div style={s.portraitCol}>
           <div style={s.mainPhoto}>
             <Image
