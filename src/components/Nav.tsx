@@ -39,9 +39,9 @@ const s = {
 };
 
 const navItems = [
-  { label: "FREE CONSULT",  href: "#schedule" },
-  { label: "CAPABILITIES",  href: "#capabilities" },
-  { label: "ABOUT",         href: "#about" },
+  { label: "Free Consult",  href: "#schedule" },
+  { label: "Capabilities",  href: "#capabilities" },
+  { label: "About",         href: "#about" },
 ];
 
 export function Nav() {

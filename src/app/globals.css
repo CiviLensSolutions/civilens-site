@@ -11,8 +11,8 @@
 
 :root,
 [data-theme="dark"] {
-  --bg-0:        #1b2127;
-  --bg-1:        #242d34;
+  --bg-0:        #222b33;
+  --bg-1:        #2c3740;
   --bg-2:        #313d47;
   --bg-3:        #3c4b57;
   --bg-4:        #4a5d6b;
@@ -82,15 +82,15 @@
   --ease-in-out: cubic-bezier(0.5, 0, 0.2, 1);
   --dur:         200ms;
 
-  --surface-blur:         rgba(27, 33, 39, 1);
-  --imagery-overlay-top:  rgba(27, 33, 39, 0.55);
-  --imagery-overlay-mid:  rgba(27, 33, 39, 0.15);
-  --imagery-overlay-bot:  rgba(27, 33, 39, 0.92);
+  --surface-blur:         rgba(34, 43, 51, 1);
+  --imagery-overlay-top:  rgba(34, 43, 51, 0.55);
+  --imagery-overlay-mid:  rgba(34, 43, 51, 0.15);
+  --imagery-overlay-bot:  rgba(34, 43, 51, 0.92);
 }
 
 /* Dark theme warmth pass */
 [data-theme="dark"] {
-  --bg-1: #2a333b;
+  --bg-1: #303d47;
   --bg-2: #38444f;
 }
 
