@@ -102,17 +102,19 @@ export function Nav() {
 
   return (
     <div style={s.outer} data-theme="dark">
-      <nav style={s.nav}>
+      <nav style={s.nav} className="nav-bar">
         <div style={s.left}>
           <Logo height={20} color="var(--fg-1)" />
-          <div style={s.links} className="nav-links">
+          <ul style={{ ...s.links, listStyle: "none", margin: 0, padding: 0 }} className="nav-links">
             {navItems.map((item) => (
-              <a key={item.label} href={item.href} style={s.link}
-                 onMouseOver={(e) => (e.currentTarget.style.color = "var(--fg-1)")}
-                 onMouseOut={(e) => (e.currentTarget.style.color = "var(--fg-2)")}
-              >{item.label}</a>
+              <li key={item.label}>
+                <a href={item.href} style={s.link}
+                   onMouseOver={(e) => (e.currentTarget.style.color = "var(--fg-1)")}
+                   onMouseOut={(e) => (e.currentTarget.style.color = "var(--fg-2)")}
+                >{item.label}</a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
         <div style={s.right}>
           <button style={s.themeBtn} onClick={toggleTheme}
@@ -137,6 +139,8 @@ export function Nav() {
             style={s.hamburger}
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             {menuOpen
               ? <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -146,7 +150,7 @@ export function Nav() {
         </div>
         <div style={s.rule} />
       </nav>
-      <div className="mob-menu" style={{ ...s.mobileMenu, display: menuOpen ? "flex" : undefined }}>
+      <div id="mobile-menu" style={{ ...s.mobileMenu, display: menuOpen ? "flex" : "none" }} aria-label="Mobile navigation">
         {navItems.map((item) => (
           <a key={item.label} href={item.href} style={s.mobileLink} onClick={closeMenu}>
             {item.label}

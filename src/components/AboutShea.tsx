@@ -104,7 +104,7 @@ export function AboutShea() {
         </div>
 
         <div style={s.bio}>
-          <div style={s.eb}><span style={s.ebRule} />About the host</div>
+          <div style={s.eb}><span style={s.ebRule} />About</div>
           <h2 style={s.headline}>Shea Scott — 17 years building government technology.</h2>
           <p style={s.para}>
             After five years in the Air Force, Shea spent 17 years building web
@@ -121,15 +121,15 @@ export function AboutShea() {
             of building web systems for organizations that couldn&apos;t afford
             for them to fail.
           </p>
-          <div style={s.stats}>
+          <div style={s.stats} className="stats-grid">
             {[
               { value: "17 yrs", label: "Inside government technology" },
               { value: "20 yrs", label: "Web development" },
               { value: "Free", label: "Cost of the consult" },
             ].map((stat) => (
-              <div key={stat.label} style={s.stat}>
-                <div style={s.statValue}>{stat.value}</div>
-                <div style={s.statLabel}>{stat.label}</div>
+              <div key={stat.label} style={s.stat} className="stat-cell">
+                <div style={s.statValue} className="stat-value">{stat.value}</div>
+                <div style={s.statLabel} className="stat-label">{stat.label}</div>
               </div>
             ))}
           </div>

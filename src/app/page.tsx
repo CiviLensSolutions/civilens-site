@@ -8,14 +8,17 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Nav />
-      <CalEmbed />
-      <SectionRule />
-      <AboutShea />
-      <SectionRule />
-      <Capabilities />
-      <SectionRule />
-      <Footer />
+      <main id="main-content">
+        <h1 className="sr-only">CiviLens — Civic Intelligence for Government &amp; Nonprofits</h1>
+        <CalEmbed />
+        <SectionRule />
+        <AboutShea />
+        <SectionRule />
+        <Capabilities />
+        <Footer />
+      </main>
     </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { ClaudeProBadge } from "./ClaudeProBadge";
+import { ClaudeMark } from "./ClaudeMark";
 
 declare global {
   interface Window {
@@ -25,7 +26,7 @@ const s = {
     display: "grid", gridTemplateColumns: "minmax(0, 0.75fr) minmax(0, 1.25fr)",
     gap: 80, alignItems: "start", maxWidth: 1280, margin: "0 auto",
   },
-  pitch: { display: "flex", flexDirection: "column" as const, gap: 24, paddingTop: 32 },
+  pitch: { display: "flex", flexDirection: "column" as const, gap: 24, paddingTop: 32, height: "100%" },
   eb: {
     font: "500 12px/1 var(--font-mono)", letterSpacing: "0.18em", textTransform: "uppercase" as const,
     color: "var(--accent)", display: "inline-flex", alignItems: "center", gap: 12,
@@ -63,6 +64,12 @@ const s = {
     marginTop: 12, textAlign: "center" as const,
     font: "500 12px/1 var(--font-mono)", color: "var(--fg-4)",
     letterSpacing: "0.14em", textTransform: "uppercase" as const,
+  },
+  footnote: {
+    display: "flex", alignItems: "flex-start", gap: 7, marginTop: "auto", paddingTop: 24,
+    boxShadow: "inset 0 1px 0 var(--hairline)",
+    font: "400 12px/1.5 var(--font-sans)", color: "var(--fg-3)",
+    letterSpacing: "-0.002em",
   },
   wygWrap: {
     position: "relative" as const, maxWidth: 1280, margin: "0 auto",
@@ -138,7 +145,7 @@ export function CalEmbed() {
   }, []);
 
   return (
-    <section style={s.section} id="schedule" className="section-pad section-pad-b">
+    <section style={s.section} id="schedule" className="section-pad section-pad-b section-pad-first">
       <div style={s.bgGlow} />
       <div style={s.inner} className="mob-stack">
         <div style={s.pitch}>
@@ -148,7 +155,7 @@ export function CalEmbed() {
             <span style={s.amber}>That&apos;s the whole step.</span>
           </h2>
           <p style={s.body}>
-            30 minutes. Free. One month of <ClaudeProBadge /><br />when we&apos;re done.
+            30 minutes. Free. One month of <ClaudeProBadge /> when we&apos;re done.
           </p>
           <p style={s.bodyAside}>
             Ollama. DeepSeek. Qwen. Grok. They sound more like spaceship names than
@@ -157,6 +164,10 @@ export function CalEmbed() {
           </p>
           <p style={s.body}>
             Not ready for that yet? Grab 15 minutes instead — no agenda, no pitch. Just answers.
+          </p>
+          <p style={s.footnote}>
+            <ClaudeMark size={14} style={{ marginLeft: 0, marginTop: 1, flexShrink: 0, verticalAlign: "unset" }} />
+            Claude Pro gives you access to Claude, Cowork, Claude Code and Claude Design (research preview)
           </p>
         </div>
 
@@ -171,7 +182,6 @@ export function CalEmbed() {
           <div style={s.calMount} className="cal-mount-frame">
             <div id="cal-embed-mount" style={{ minHeight: 680 }} />
           </div>
-          <div style={s.watermark}>cal.com</div>
         </div>
       </div>
 
