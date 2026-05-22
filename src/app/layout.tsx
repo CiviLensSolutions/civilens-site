@@ -13,14 +13,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.civilens.solutions",
   },
-  icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-    ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
-  },
   openGraph: {
     title: "CiviLens — AI Consulting for Government & Nonprofits",
     description: "Veteran-owned AI consulting. Free 30-minute AI workflow consult for government & nonprofits.",
@@ -135,6 +127,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     >
       <head>
         <link rel="preconnect" href="https://app.cal.com" />
+        <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
         <script type="application/ld+json">{JSON.stringify(schemaGraph)}</script>
       </head>
       <body>{children}</body>
