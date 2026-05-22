@@ -57,6 +57,7 @@ export function Footer() {
 
       <div style={s.bottom} className="footer-bottom">
         <span>© 2026 Civilens LLC</span>
+        <a href="/privacy" style={{ ...s.link, color: "var(--fg-3)" }}>Privacy Policy</a>
       </div>
     </footer>
   );

@@ -1,6 +1,3 @@
-"use client";
-import { useState } from "react";
-
 const s = {
   section: { padding: "104px 80px", background: "var(--bg-2)" },
   head: {
@@ -18,13 +15,11 @@ const s = {
   },
   blurb: { font: "400 16.5px/1.55 var(--font-sans)", color: "var(--fg-2)", maxWidth: 420, margin: 0 },
   grid: { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 },
-  card: (hover: boolean) => ({
-    background: hover ? "var(--bg-4)" : "var(--bg-3)", borderRadius: "var(--r-3)",
-    boxShadow: hover ? "var(--shadow-3)" : "var(--shadow-2)",
+  card: {
+    borderRadius: "var(--r-3)",
     padding: "32px 28px 28px", display: "flex", flexDirection: "column" as const, gap: 16,
     minHeight: 300,
-    transition: "background 200ms var(--ease-out), box-shadow 200ms var(--ease-out)",
-  }),
+  },
   num: { font: "500 11px/1 var(--font-mono)", letterSpacing: "0.16em", textTransform: "uppercase" as const, color: "var(--fg-3)" },
   cardTitle: { font: "600 22px/1.2 var(--font-sans)", letterSpacing: "-0.015em", color: "var(--fg-1)", margin: 0 },
   cardBody: { font: "400 14.5px/1.6 var(--font-sans)", color: "var(--fg-2)", margin: 0, flex: 1 },
@@ -43,12 +38,11 @@ const CAPS = [
 ];
 
 export function Capabilities() {
-  const [hover, setHover] = useState<number | null>(null);
   return (
     <section style={s.section} id="capabilities" className="section-pad">
       <div style={s.head}>
         <div>
-          <div style={s.eb}><span style={s.ebRule} />The product, briefly</div>
+          <div style={s.eb}><span style={s.ebRule} />AI consulting for government &amp; nonprofits</div>
           <h2 style={s.title}>What CiviLens does, when you&apos;re ready.</h2>
         </div>
         <p style={s.blurb}>
@@ -57,11 +51,8 @@ export function Capabilities() {
         </p>
       </div>
       <div style={s.grid} className="mob-1col">
-        {CAPS.map((c, i) => (
-          <div key={c.n} style={s.card(hover === i)}
-            onMouseEnter={() => setHover(i)}
-            onMouseLeave={() => setHover(null)}
-          >
+        {CAPS.map((c) => (
+          <div key={c.n} style={s.card} className="cap-card">
             <div style={s.num}>{c.n}</div>
             <h3 style={s.cardTitle}>{c.title}</h3>
             <p style={s.cardBody}>{c.body}</p>

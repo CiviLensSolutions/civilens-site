@@ -230,6 +230,17 @@
   .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 40px !important; }
 }
 
+/* Capabilities card hover — CSS-only, no JS needed */
+.cap-card {
+  background: var(--bg-3);
+  box-shadow: var(--shadow-2);
+  transition: background 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.cap-card:hover {
+  background: var(--bg-4);
+  box-shadow: var(--shadow-3);
+}
+
 @media (max-width: 767px) {
   .section-pad   { padding: 64px 24px !important; }
   .section-pad-b { padding-bottom: 80px !important; }
