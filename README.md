@@ -1,4 +1,17 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CiviLens Site
+
+The marketing and landing page site for [CiviLens](https://www.civilens.solutions), built with Next.js.
+
+## Development Setup
+
+```bash
+npm install   # installs deps and auto-configures git hooks
+npm run dev   # start local dev server at http://localhost:3000
+```
+
+`npm install` runs a `prepare` script that wires `.githooks/` as the git hooks directory. The pre-push hook runs `next build` before any push — if the build fails, the push is aborted so broken code never reaches the remote.
+
+> **New contributors:** you get this automatically. No extra steps needed.
 
 ## Getting Started
 

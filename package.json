@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prepare": "if [ -d .git ]; then git config core.hooksPath .githooks; fi"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
